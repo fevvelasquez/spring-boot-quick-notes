@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import me.fevvelasquez.spring.boot.quicknotes.profiles.EnvironmentService;
 import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Airplane;
 import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Animal;
 import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Bird;
@@ -16,8 +17,11 @@ import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Nest;
 /**
  * Spring Boot Quick Notes.
  * 
- * @version 0.0.4 Using @Qualifier and @Primary for cases with multiple
- *          implementation.
+ * @version 0.0.5. Profiles: @Profile, 
+ * 					application.properties or 
+ * 					VM argument as "-Dspring.profiles.active=dev" or 
+ * 					"default". 
+ * 					VM has max priority.
  * @author fevvelasquez@gmail.com
  *
  */
@@ -29,6 +33,13 @@ public class SpringBootQuickNotesApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(SpringBootQuickNotesApplication.class, args);
 
+		EnvironmentService es = ctx.getBean(EnvironmentService.class);
+		log.info("Active environment: {}", es.getEnvironment());
+
+	}
+
+	@SuppressWarnings("unused")
+	private static void qualifiers(ConfigurableApplicationContext ctx) {
 		// Qualifiers / Primary example:
 		Animal animal1 = ctx.getBean(Dog.class);
 		log.info("{}", animal1);
@@ -53,7 +64,6 @@ public class SpringBootQuickNotesApplication {
 		// Qualifier into Nest
 		Nest nest = ctx.getBean(Nest.class);
 		log.info("{}", nest);
-
 	}
 
 }
