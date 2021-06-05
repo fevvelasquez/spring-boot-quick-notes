@@ -11,7 +11,8 @@ import me.fevvelasquez.spring.boot.quicknotes.di.Auto;
 /**
  * Spring Boot Quick Notes.
  * 
- * @version 0.0.2 Using @Component, @Value, @Autowired in attributes.
+ * @version 0.0.3 Using @Component, @Value, @Autowired in the
+ *          constructor/setters.
  * @author fevvelasquez@gmail.com
  *
  */

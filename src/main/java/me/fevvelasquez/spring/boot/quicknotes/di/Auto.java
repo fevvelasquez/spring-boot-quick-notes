@@ -7,18 +7,24 @@ import org.springframework.stereotype.Component;
 /**
  * Demo class.
  * 
- * @version 0.0.2 Using @Component, @Value, @Autowired in attributes.
+ * @version 0.0.3 Using @Component, @Value, @Autowired in the
+ *          constructor/setters.
  * @author fevvelasquez@gmail.com
  *
  */
 @Component
 public class Auto {
-	@Value("2022")
 	private Integer id;
-	@Value("SPB Deluxe")
 	private String name;
-	@Autowired
 	private Motor motor;
+
+	@Autowired
+	public Auto(@Value("2022") Integer id, @Value("Constructor Auto") String name, Motor motor) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.motor = motor;
+	}
 
 	@Override
 	public String toString() {

@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 /**
  * Demo class.
  * 
- * @version 0.0.2 Using @Component, @Value, @Autowired in attributes.
+ * @version 0.0.3 Using @Component, @Value, @Autowired in the
+ *          constructor/setters.
  * @author fevvelasquez@gmail.com
  *
  */
@@ -14,11 +15,19 @@ import org.springframework.stereotype.Component;
 public class Motor {
 	@Value("2022")
 	private Integer id;
-	@Value("Standard Motor SPB")
 	private String name;
 
 	public String toString() {
 		return "Motor [id=" + id + ", name=" + name + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Value("Setter Motor")
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
