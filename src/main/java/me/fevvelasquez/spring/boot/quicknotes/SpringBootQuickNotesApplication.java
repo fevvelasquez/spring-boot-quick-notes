@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import me.fevvelasquez.spring.boot.quicknotes.di.Auto;
+import me.fevvelasquez.spring.boot.quicknotes.di.Motor;
 import me.fevvelasquez.spring.boot.quicknotes.profiles.EnvironmentService;
 import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Airplane;
 import me.fevvelasquez.spring.boot.quicknotes.qualifiers.Animal;
@@ -21,7 +22,7 @@ import me.fevvelasquez.spring.boot.quicknotes.scope.ScopeService;
 /**
  * Spring Boot Quick Notes.
  * 
- * @version 0.0.6. Using @Scope and @Bean.
+ * @version 0.0.7 Loading properties: @Configuration, @PropertySource
  * @author fevvelasquez@gmail.com
  *
  */
@@ -43,6 +44,13 @@ public class SpringBootQuickNotesApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(SpringBootQuickNotesApplication.class, args);
 
+		Motor motor = ctx.getBean(Motor.class);
+		log.info("{}", motor);
+
+	}
+
+	@SuppressWarnings("unused")
+	private static void scope_bean(ConfigurableApplicationContext ctx) {
 		ScopeService scopeService1 = ctx.getBean(ScopeService.class);
 		ScopeService scopeService2 = ctx.getBean(ScopeService.class);
 

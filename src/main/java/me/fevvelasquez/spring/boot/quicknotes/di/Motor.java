@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * Demo class.
  * 
- * @version 0.0.3 Using @Component, @Value, @Autowired in the
- *          constructor/setters.
+ * @version 0.0.7 Loading properties: @Configuration, @PropertySource
  * @author fevvelasquez@gmail.com
  *
  */
@@ -25,7 +24,7 @@ public class Motor {
 		return name;
 	}
 
-	@Value("Setter Motor")
+	@Value("${motor.name:Not Found}") // see: motor.properties
 	public void setName(String name) {
 		this.name = name;
 	}
